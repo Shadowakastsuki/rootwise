@@ -1,0 +1,14 @@
+
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
+alembic/versions/__pycache__/
+data/raw/
+data/processed/
+*.log
+.idea/
+.vscode/
