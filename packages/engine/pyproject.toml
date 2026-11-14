@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rootwise-engine"
+version = "0.2.0"
+description = "Source-labelled six-criterion crop screening engine for Rootwise"
+requires-python = ">=3.10"
+dependencies = ["pydantic>=2.5,<3", "PyYAML>=6,<7", "numpy>=1.24,<3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pandas>=2"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["rootwise_engine*"]
+
+[tool.setuptools.package-data]
+rootwise_engine = ["data/*.yaml", "data/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

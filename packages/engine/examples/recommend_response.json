@@ -1,0 +1,990 @@
+{
+  "location": {
+    "region_id": "devanahalli",
+    "lat": 13.25,
+    "lon": 77.71,
+    "soil_type": null,
+    "slope_degrees": null,
+    "water_access": "unknown",
+    "current_crop_id": null,
+    "selected_variety": null,
+    "sowing_date": null,
+    "cover_management_c_by_crop": {},
+    "residue_dry_t_ha_by_crop": {},
+    "residue_retained_fraction": null,
+    "market_by_crop": {},
+    "phenology_override_days": null,
+    "phenology_override_source": null
+  },
+  "priorities": {
+    "water_use": 80.0,
+    "forage_value": 60.0,
+    "nitrogen_fixing": 90.0,
+    "erosion_reduction": 70.0,
+    "organic_matter": 70.0,
+    "market_suitability": 50.0
+  },
+  "strategies": [
+    {
+      "id": "soil_focus",
+      "name": "Soil and nitrogen option",
+      "rank": 1,
+      "primary_crop_id": "cowpea",
+      "rationale": "Selected via a focus-specific screen; final score shown uses farmer weights. Tied scores are not proof of superiority. No rotation agronomy is claimed.",
+      "score": {
+        "crop_id": "cowpea",
+        "subscores": {
+          "water_use": {
+            "value": 90.909,
+            "method": "relative_inverse_FAO_seasonal_ET_reference",
+            "evidence_urls": [
+              "https://www.fao.org/4/s2022e/s2022e07.htm"
+            ],
+            "proxy": true,
+            "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+            "input_summary": {
+              "seasonal_reference_mid_mm": 400.0
+            }
+          },
+          "forage_value": {
+            "value": 68.5,
+            "method": "forage_crude_protein_quality_proxy",
+            "evidence_urls": [
+              "https://www.feedipedia.org/node/17446"
+            ],
+            "proxy": true,
+            "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+            "input_summary": {
+              "crude_protein_pct_dm": 13.7,
+              "benchmark_pct_dm": 20.0,
+              "material": "haulms"
+            }
+          },
+          "nitrogen_fixing": {
+            "value": 100.0,
+            "method": "binary_biological_nitrogen_fixing_capability",
+            "evidence_urls": [
+              "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+              "https://www.fao.org/4/s2022e/s2022e07.htm",
+              "https://www.feedipedia.org/node/17446"
+            ],
+            "proxy": false,
+            "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+            "input_summary": {
+              "can_fix_nitrogen": "true"
+            }
+          },
+          "erosion_reduction": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          },
+          "organic_matter": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          },
+          "market_suitability": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          }
+        },
+        "total": 48.53,
+        "scored_weight_fraction": 0.54762,
+        "qualification": "conservative_known_contribution_not_crop_suitability"
+      },
+      "evidence": {
+        "benefits": [
+          "Biological N fixation is possible; net soil N gain unquantified",
+          "Published feed crude-protein analysis for a specified material",
+          "Published seasonal crop ET reference or category proxy"
+        ],
+        "risks": [
+          "Scores are an evidence-constrained policy index, not crop yield forecasts or planting advice",
+          "Partial priority-weight coverage: missing criteria can change rankings",
+          "One or more values are quality proxies or policy indices, not field measurements",
+          "Location-level feasibility has not been tested"
+        ],
+        "data_used": [
+          "water_use: relative_inverse_FAO_seasonal_ET_reference",
+          "forage_value: forage_crude_protein_quality_proxy",
+          "nitrogen_fixing: binary_biological_nitrogen_fixing_capability"
+        ],
+        "missing_information": [
+          "erosion_reduction",
+          "organic_matter",
+          "market_suitability",
+          "verified variety-specific five-stage phenology",
+          "site-specific NASA/M2 climate series",
+          "species-specific water value: FAO category proxy used",
+          "daily field temperature/moisture for stage vulnerability",
+          "dated local APMC prices, yield and cultivation costs"
+        ],
+        "source_urls": [
+          "https://www.fao.org/4/s2022e/s2022e07.htm",
+          "https://www.feedipedia.org/node/17446",
+          "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/"
+        ],
+        "confidence": "low",
+        "confidence_explanation": "Weighted criterion evidence coverage 54.8%; not a probability of yield/success",
+        "needs_local_review": true
+      },
+      "status": "screening_only_not_planting_advice"
+    },
+    {
+      "id": "water_focus",
+      "name": "Water-conserving option",
+      "rank": 2,
+      "primary_crop_id": "green_gram",
+      "rationale": "Selected via a focus-specific screen; final score shown uses farmer weights. Tied scores are not proof of superiority. No rotation agronomy is claimed.",
+      "score": {
+        "crop_id": "green_gram",
+        "subscores": {
+          "water_use": {
+            "value": 100.0,
+            "method": "relative_inverse_FAO_seasonal_ET_reference",
+            "evidence_urls": [
+              "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+            ],
+            "proxy": true,
+            "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+            "input_summary": {
+              "seasonal_reference_mid_mm": 375.0
+            }
+          },
+          "forage_value": {
+            "value": 49.0,
+            "method": "forage_crude_protein_quality_proxy",
+            "evidence_urls": [
+              "https://www.feedipedia.org/node/235"
+            ],
+            "proxy": true,
+            "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+            "input_summary": {
+              "crude_protein_pct_dm": 9.8,
+              "benchmark_pct_dm": 20.0,
+              "material": "straw"
+            }
+          },
+          "nitrogen_fixing": {
+            "value": 100.0,
+            "method": "binary_biological_nitrogen_fixing_capability",
+            "evidence_urls": [
+              "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+              "https://www.fao.org/4/s2022e/s2022e07.htm",
+              "https://www.feedipedia.org/node/235",
+              "https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf",
+              "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+            ],
+            "proxy": false,
+            "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+            "input_summary": {
+              "can_fix_nitrogen": "true"
+            }
+          },
+          "erosion_reduction": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          },
+          "organic_matter": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          },
+          "market_suitability": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          }
+        },
+        "total": 47.476,
+        "scored_weight_fraction": 0.54762,
+        "qualification": "conservative_known_contribution_not_crop_suitability"
+      },
+      "evidence": {
+        "benefits": [
+          "Biological N fixation is possible; net soil N gain unquantified",
+          "Published feed crude-protein analysis for a specified material",
+          "Published seasonal crop ET reference or category proxy"
+        ],
+        "risks": [
+          "Scores are an evidence-constrained policy index, not crop yield forecasts or planting advice",
+          "Partial priority-weight coverage: missing criteria can change rankings",
+          "One or more values are quality proxies or policy indices, not field measurements",
+          "Location-level feasibility has not been tested"
+        ],
+        "data_used": [
+          "water_use: relative_inverse_FAO_seasonal_ET_reference",
+          "forage_value: forage_crude_protein_quality_proxy",
+          "nitrogen_fixing: binary_biological_nitrogen_fixing_capability"
+        ],
+        "missing_information": [
+          "erosion_reduction",
+          "organic_matter",
+          "market_suitability",
+          "verified variety-specific five-stage phenology",
+          "site-specific NASA/M2 climate series",
+          "species-specific water value: FAO category proxy used",
+          "daily field temperature/moisture for stage vulnerability",
+          "dated local APMC prices, yield and cultivation costs"
+        ],
+        "source_urls": [
+          "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
+          "https://www.fao.org/4/s2022e/s2022e07.htm",
+          "https://www.feedipedia.org/node/235",
+          "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+          "https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf"
+        ],
+        "confidence": "low",
+        "confidence_explanation": "Weighted criterion evidence coverage 54.8%; not a probability of yield/success",
+        "needs_local_review": true
+      },
+      "status": "screening_only_not_planting_advice"
+    },
+    {
+      "id": "balanced_focus",
+      "name": "Farmer-priority balanced option",
+      "rank": 3,
+      "primary_crop_id": "groundnut",
+      "rationale": "Selected via a focus-specific screen; final score shown uses farmer weights. Tied scores are not proof of superiority. No rotation agronomy is claimed.",
+      "score": {
+        "crop_id": "groundnut",
+        "subscores": {
+          "water_use": {
+            "value": 18.182,
+            "method": "relative_inverse_FAO_seasonal_ET_reference",
+            "evidence_urls": [
+              "https://www.fao.org/4/s2022e/s2022e07.htm"
+            ],
+            "proxy": false,
+            "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+            "input_summary": {
+              "seasonal_reference_mid_mm": 600.0
+            }
+          },
+          "forage_value": {
+            "value": 55.5,
+            "method": "forage_crude_protein_quality_proxy",
+            "evidence_urls": [
+              "https://www.feedipedia.org/node/695"
+            ],
+            "proxy": true,
+            "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+            "input_summary": {
+              "crude_protein_pct_dm": 11.1,
+              "benchmark_pct_dm": 20.0,
+              "material": "dried haulms"
+            }
+          },
+          "nitrogen_fixing": {
+            "value": 100.0,
+            "method": "binary_biological_nitrogen_fixing_capability",
+            "evidence_urls": [
+              "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+              "https://www.fao.org/4/s2022e/s2022e07.htm",
+              "https://www.feedipedia.org/node/695",
+              "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+            ],
+            "proxy": false,
+            "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+            "input_summary": {
+              "can_fix_nitrogen": "true"
+            }
+          },
+          "erosion_reduction": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          },
+          "organic_matter": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          },
+          "market_suitability": {
+            "value": null,
+            "method": "unavailable",
+            "evidence_urls": [],
+            "proxy": false,
+            "reason": "Insufficient traceable evidence/inputs for this criterion",
+            "input_summary": {}
+          }
+        },
+        "total": 32.82,
+        "scored_weight_fraction": 0.54762,
+        "qualification": "conservative_known_contribution_not_crop_suitability"
+      },
+      "evidence": {
+        "benefits": [
+          "Biological N fixation is possible; net soil N gain unquantified",
+          "Published feed crude-protein analysis for a specified material",
+          "Published seasonal crop ET reference or category proxy"
+        ],
+        "risks": [
+          "Scores are an evidence-constrained policy index, not crop yield forecasts or planting advice",
+          "Partial priority-weight coverage: missing criteria can change rankings",
+          "One or more values are quality proxies or policy indices, not field measurements",
+          "Location-level feasibility has not been tested"
+        ],
+        "data_used": [
+          "water_use: relative_inverse_FAO_seasonal_ET_reference",
+          "forage_value: forage_crude_protein_quality_proxy",
+          "nitrogen_fixing: binary_biological_nitrogen_fixing_capability"
+        ],
+        "missing_information": [
+          "erosion_reduction",
+          "organic_matter",
+          "market_suitability",
+          "verified variety-specific five-stage phenology",
+          "site-specific NASA/M2 climate series",
+          "daily field temperature/moisture for stage vulnerability",
+          "dated local APMC prices, yield and cultivation costs"
+        ],
+        "source_urls": [
+          "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
+          "https://www.fao.org/4/s2022e/s2022e07.htm",
+          "https://www.feedipedia.org/node/695",
+          "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/"
+        ],
+        "confidence": "low",
+        "confidence_explanation": "Weighted criterion evidence coverage 54.8%; not a probability of yield/success",
+        "needs_local_review": true
+      },
+      "status": "screening_only_not_planting_advice"
+    }
+  ],
+  "candidate_scores": [
+    {
+      "crop_id": "ragi",
+      "subscores": {
+        "water_use": {
+          "value": 36.364,
+          "method": "relative_inverse_FAO_seasonal_ET_reference",
+          "evidence_urls": [
+            "https://www.fao.org/4/s2022e/s2022e07.htm"
+          ],
+          "proxy": true,
+          "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+          "input_summary": {
+            "seasonal_reference_mid_mm": 550.0
+          }
+        },
+        "forage_value": {
+          "value": 25.0,
+          "method": "forage_crude_protein_quality_proxy",
+          "evidence_urls": [
+            "https://www.feedipedia.org/node/447"
+          ],
+          "proxy": true,
+          "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+          "input_summary": {
+            "crude_protein_pct_dm": 5.0,
+            "benchmark_pct_dm": 20.0,
+            "material": "straw"
+          }
+        },
+        "nitrogen_fixing": {
+          "value": 0.0,
+          "method": "binary_biological_nitrogen_fixing_capability",
+          "evidence_urls": [
+            "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+            "https://www.fao.org/4/s2022e/s2022e07.htm",
+            "https://www.feedipedia.org/node/447"
+          ],
+          "proxy": false,
+          "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+          "input_summary": {
+            "can_fix_nitrogen": "false"
+          }
+        },
+        "erosion_reduction": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "organic_matter": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "market_suitability": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        }
+      },
+      "total": 10.498,
+      "scored_weight_fraction": 0.54762,
+      "qualification": "conservative_known_contribution_not_crop_suitability"
+    },
+    {
+      "crop_id": "groundnut",
+      "subscores": {
+        "water_use": {
+          "value": 18.182,
+          "method": "relative_inverse_FAO_seasonal_ET_reference",
+          "evidence_urls": [
+            "https://www.fao.org/4/s2022e/s2022e07.htm"
+          ],
+          "proxy": false,
+          "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+          "input_summary": {
+            "seasonal_reference_mid_mm": 600.0
+          }
+        },
+        "forage_value": {
+          "value": 55.5,
+          "method": "forage_crude_protein_quality_proxy",
+          "evidence_urls": [
+            "https://www.feedipedia.org/node/695"
+          ],
+          "proxy": true,
+          "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+          "input_summary": {
+            "crude_protein_pct_dm": 11.1,
+            "benchmark_pct_dm": 20.0,
+            "material": "dried haulms"
+          }
+        },
+        "nitrogen_fixing": {
+          "value": 100.0,
+          "method": "binary_biological_nitrogen_fixing_capability",
+          "evidence_urls": [
+            "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+            "https://www.fao.org/4/s2022e/s2022e07.htm",
+            "https://www.feedipedia.org/node/695",
+            "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+          ],
+          "proxy": false,
+          "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+          "input_summary": {
+            "can_fix_nitrogen": "true"
+          }
+        },
+        "erosion_reduction": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "organic_matter": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "market_suitability": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        }
+      },
+      "total": 32.82,
+      "scored_weight_fraction": 0.54762,
+      "qualification": "conservative_known_contribution_not_crop_suitability"
+    },
+    {
+      "crop_id": "horse_gram",
+      "subscores": {
+        "water_use": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "forage_value": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "nitrogen_fixing": {
+          "value": 100.0,
+          "method": "binary_biological_nitrogen_fixing_capability",
+          "evidence_urls": [
+            "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+            "https://www.fao.org/4/s2022e/s2022e07.htm",
+            "https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf"
+          ],
+          "proxy": false,
+          "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+          "input_summary": {
+            "can_fix_nitrogen": "true"
+          }
+        },
+        "erosion_reduction": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "organic_matter": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "market_suitability": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        }
+      },
+      "total": 21.429,
+      "scored_weight_fraction": 0.21429,
+      "qualification": "conservative_known_contribution_not_crop_suitability"
+    },
+    {
+      "crop_id": "cowpea",
+      "subscores": {
+        "water_use": {
+          "value": 90.909,
+          "method": "relative_inverse_FAO_seasonal_ET_reference",
+          "evidence_urls": [
+            "https://www.fao.org/4/s2022e/s2022e07.htm"
+          ],
+          "proxy": true,
+          "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+          "input_summary": {
+            "seasonal_reference_mid_mm": 400.0
+          }
+        },
+        "forage_value": {
+          "value": 68.5,
+          "method": "forage_crude_protein_quality_proxy",
+          "evidence_urls": [
+            "https://www.feedipedia.org/node/17446"
+          ],
+          "proxy": true,
+          "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+          "input_summary": {
+            "crude_protein_pct_dm": 13.7,
+            "benchmark_pct_dm": 20.0,
+            "material": "haulms"
+          }
+        },
+        "nitrogen_fixing": {
+          "value": 100.0,
+          "method": "binary_biological_nitrogen_fixing_capability",
+          "evidence_urls": [
+            "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+            "https://www.fao.org/4/s2022e/s2022e07.htm",
+            "https://www.feedipedia.org/node/17446"
+          ],
+          "proxy": false,
+          "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+          "input_summary": {
+            "can_fix_nitrogen": "true"
+          }
+        },
+        "erosion_reduction": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "organic_matter": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "market_suitability": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        }
+      },
+      "total": 48.53,
+      "scored_weight_fraction": 0.54762,
+      "qualification": "conservative_known_contribution_not_crop_suitability"
+    },
+    {
+      "crop_id": "pigeon_pea",
+      "subscores": {
+        "water_use": {
+          "value": 0.0,
+          "method": "relative_inverse_FAO_seasonal_ET_reference",
+          "evidence_urls": [
+            "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+          ],
+          "proxy": false,
+          "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+          "input_summary": {
+            "seasonal_reference_mid_mm": 650.0
+          }
+        },
+        "forage_value": {
+          "value": 72.5,
+          "method": "forage_crude_protein_quality_proxy",
+          "evidence_urls": [
+            "https://www.feedipedia.org/node/22444"
+          ],
+          "proxy": true,
+          "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+          "input_summary": {
+            "crude_protein_pct_dm": 14.5,
+            "benchmark_pct_dm": 20.0,
+            "material": "hay"
+          }
+        },
+        "nitrogen_fixing": {
+          "value": 100.0,
+          "method": "binary_biological_nitrogen_fixing_capability",
+          "evidence_urls": [
+            "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+            "https://www.fao.org/4/s2022e/s2022e07.htm",
+            "https://www.feedipedia.org/node/22444",
+            "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+          ],
+          "proxy": false,
+          "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+          "input_summary": {
+            "can_fix_nitrogen": "true"
+          }
+        },
+        "erosion_reduction": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "organic_matter": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "market_suitability": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        }
+      },
+      "total": 31.786,
+      "scored_weight_fraction": 0.54762,
+      "qualification": "conservative_known_contribution_not_crop_suitability"
+    },
+    {
+      "crop_id": "green_gram",
+      "subscores": {
+        "water_use": {
+          "value": 100.0,
+          "method": "relative_inverse_FAO_seasonal_ET_reference",
+          "evidence_urls": [
+            "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+          ],
+          "proxy": true,
+          "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+          "input_summary": {
+            "seasonal_reference_mid_mm": 375.0
+          }
+        },
+        "forage_value": {
+          "value": 49.0,
+          "method": "forage_crude_protein_quality_proxy",
+          "evidence_urls": [
+            "https://www.feedipedia.org/node/235"
+          ],
+          "proxy": true,
+          "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+          "input_summary": {
+            "crude_protein_pct_dm": 9.8,
+            "benchmark_pct_dm": 20.0,
+            "material": "straw"
+          }
+        },
+        "nitrogen_fixing": {
+          "value": 100.0,
+          "method": "binary_biological_nitrogen_fixing_capability",
+          "evidence_urls": [
+            "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+            "https://www.fao.org/4/s2022e/s2022e07.htm",
+            "https://www.feedipedia.org/node/235",
+            "https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf",
+            "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf"
+          ],
+          "proxy": false,
+          "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+          "input_summary": {
+            "can_fix_nitrogen": "true"
+          }
+        },
+        "erosion_reduction": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "organic_matter": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "market_suitability": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        }
+      },
+      "total": 47.476,
+      "scored_weight_fraction": 0.54762,
+      "qualification": "conservative_known_contribution_not_crop_suitability"
+    },
+    {
+      "crop_id": "sorghum",
+      "subscores": {
+        "water_use": {
+          "value": 36.364,
+          "method": "relative_inverse_FAO_seasonal_ET_reference",
+          "evidence_urls": [
+            "https://www.fao.org/4/s2022e/s2022e07.htm"
+          ],
+          "proxy": false,
+          "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+          "input_summary": {
+            "seasonal_reference_mid_mm": 550.0
+          }
+        },
+        "forage_value": {
+          "value": 18.5,
+          "method": "forage_crude_protein_quality_proxy",
+          "evidence_urls": [
+            "https://www.feedipedia.org/node/379"
+          ],
+          "proxy": true,
+          "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+          "input_summary": {
+            "crude_protein_pct_dm": 3.7,
+            "benchmark_pct_dm": 20.0,
+            "material": "straw"
+          }
+        },
+        "nitrogen_fixing": {
+          "value": 0.0,
+          "method": "binary_biological_nitrogen_fixing_capability",
+          "evidence_urls": [
+            "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+            "https://www.fao.org/4/s2022e/s2022e07.htm",
+            "https://www.feedipedia.org/node/379"
+          ],
+          "proxy": false,
+          "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+          "input_summary": {
+            "can_fix_nitrogen": "false"
+          }
+        },
+        "erosion_reduction": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "organic_matter": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "market_suitability": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        }
+      },
+      "total": 9.569,
+      "scored_weight_fraction": 0.54762,
+      "qualification": "conservative_known_contribution_not_crop_suitability"
+    },
+    {
+      "crop_id": "foxtail_millet",
+      "subscores": {
+        "water_use": {
+          "value": 36.364,
+          "method": "relative_inverse_FAO_seasonal_ET_reference",
+          "evidence_urls": [
+            "https://www.fao.org/4/s2022e/s2022e07.htm"
+          ],
+          "proxy": true,
+          "reason": "Comparative demand index only; NOT sufficiency, yield, or irrigation need",
+          "input_summary": {
+            "seasonal_reference_mid_mm": 550.0
+          }
+        },
+        "forage_value": {
+          "value": 21.0,
+          "method": "forage_crude_protein_quality_proxy",
+          "evidence_urls": [
+            "https://www.feedipedia.org/node/382"
+          ],
+          "proxy": true,
+          "reason": "Feedipedia feed-material CP reference: quality only, no forage availability; crop materials differ",
+          "input_summary": {
+            "crude_protein_pct_dm": 4.2,
+            "benchmark_pct_dm": 20.0,
+            "material": "stover"
+          }
+        },
+        "nitrogen_fixing": {
+          "value": 0.0,
+          "method": "binary_biological_nitrogen_fixing_capability",
+          "evidence_urls": [
+            "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+            "https://www.fao.org/4/s2022e/s2022e07.htm",
+            "https://www.feedipedia.org/node/382"
+          ],
+          "proxy": false,
+          "reason": "Biological capability only. Fixation amount, harvest N removal and N soil credit unknown",
+          "input_summary": {
+            "can_fix_nitrogen": "false"
+          }
+        },
+        "erosion_reduction": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "organic_matter": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        },
+        "market_suitability": {
+          "value": null,
+          "method": "unavailable",
+          "evidence_urls": [],
+          "proxy": false,
+          "reason": "Insufficient traceable evidence/inputs for this criterion",
+          "input_summary": {}
+        }
+      },
+      "total": 9.926,
+      "scored_weight_fraction": 0.54762,
+      "qualification": "conservative_known_contribution_not_crop_suitability"
+    }
+  ],
+  "evidence": {
+    "benefits": [
+      "Research-backed partial crop screening available"
+    ],
+    "risks": [
+      "Crop and market suitability require agronomic validation and field data"
+    ],
+    "data_used": [
+      "forage_value: forage_crude_protein_quality_proxy",
+      "nitrogen_fixing: binary_biological_nitrogen_fixing_capability",
+      "water_use: relative_inverse_FAO_seasonal_ET_reference"
+    ],
+    "missing_information": [
+      "daily field temperature/moisture for stage vulnerability",
+      "dated local APMC prices, yield and cultivation costs",
+      "erosion_reduction",
+      "market_suitability",
+      "organic_matter",
+      "site-specific NASA/M2 climate series",
+      "species-specific water value: FAO category proxy used",
+      "verified variety-specific five-stage phenology"
+    ],
+    "source_urls": [
+      "https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf",
+      "https://www.fao.org/4/s2022e/s2022e07.htm",
+      "https://www.feedipedia.org/node/17446",
+      "https://www.feedipedia.org/node/235",
+      "https://www.feedipedia.org/node/695",
+      "https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/",
+      "https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf"
+    ],
+    "confidence": "low",
+    "confidence_explanation": "Combined criteria and environmental data are incomplete",
+    "needs_local_review": true
+  },
+  "methodology": "Six reviewable weighted screening criteria; NULL means unavailable (never imputed), rank is a provisional lower-bound policy score, not predicted success. Published crop references and location-derived measurements are distinguished by source."
+}

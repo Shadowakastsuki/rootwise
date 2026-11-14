@@ -1,0 +1,194 @@
+[
+  {
+    "crop_id": "ragi",
+    "band": null,
+    "threshold_score": 50.0,
+    "below_threshold_years": null,
+    "by_year": {},
+    "heat_flag_days_by_year": {},
+    "evidence": {
+      "benefits": [],
+      "risks": [
+        "Partial score is not a historical yield or success distribution",
+        "Historical years may combine crop-stage-incompatible season windows"
+      ],
+      "data_used": [],
+      "missing_information": [
+        "3+ sourced historical years with crop-specific ETc, effective rain, irrigation"
+      ],
+      "source_urls": [],
+      "confidence": "low",
+      "confidence_explanation": "Nonvalidated screening score percentiles, not a probabilistic forecast",
+      "needs_local_review": true
+    },
+    "status": "insufficient_historical_data"
+  },
+  {
+    "crop_id": "groundnut",
+    "band": null,
+    "threshold_score": 50.0,
+    "below_threshold_years": null,
+    "by_year": {},
+    "heat_flag_days_by_year": {},
+    "evidence": {
+      "benefits": [],
+      "risks": [
+        "Partial score is not a historical yield or success distribution",
+        "Historical years may combine crop-stage-incompatible season windows"
+      ],
+      "data_used": [],
+      "missing_information": [
+        "3+ sourced historical years with crop-specific ETc, effective rain, irrigation"
+      ],
+      "source_urls": [],
+      "confidence": "low",
+      "confidence_explanation": "Nonvalidated screening score percentiles, not a probabilistic forecast",
+      "needs_local_review": true
+    },
+    "status": "insufficient_historical_data"
+  },
+  {
+    "crop_id": "horse_gram",
+    "band": null,
+    "threshold_score": 50.0,
+    "below_threshold_years": null,
+    "by_year": {},
+    "heat_flag_days_by_year": {},
+    "evidence": {
+      "benefits": [],
+      "risks": [
+        "Partial score is not a historical yield or success distribution",
+        "Historical years may combine crop-stage-incompatible season windows"
+      ],
+      "data_used": [],
+      "missing_information": [
+        "3+ sourced historical years with crop-specific ETc, effective rain, irrigation"
+      ],
+      "source_urls": [],
+      "confidence": "low",
+      "confidence_explanation": "Nonvalidated screening score percentiles, not a probabilistic forecast",
+      "needs_local_review": true
+    },
+    "status": "insufficient_historical_data"
+  },
+  {
+    "crop_id": "cowpea",
+    "band": null,
+    "threshold_score": 50.0,
+    "below_threshold_years": null,
+    "by_year": {},
+    "heat_flag_days_by_year": {},
+    "evidence": {
+      "benefits": [],
+      "risks": [
+        "Partial score is not a historical yield or success distribution",
+        "Historical years may combine crop-stage-incompatible season windows"
+      ],
+      "data_used": [],
+      "missing_information": [
+        "3+ sourced historical years with crop-specific ETc, effective rain, irrigation"
+      ],
+      "source_urls": [],
+      "confidence": "low",
+      "confidence_explanation": "Nonvalidated screening score percentiles, not a probabilistic forecast",
+      "needs_local_review": true
+    },
+    "status": "insufficient_historical_data"
+  },
+  {
+    "crop_id": "pigeon_pea",
+    "band": null,
+    "threshold_score": 50.0,
+    "below_threshold_years": null,
+    "by_year": {},
+    "heat_flag_days_by_year": {},
+    "evidence": {
+      "benefits": [],
+      "risks": [
+        "Partial score is not a historical yield or success distribution",
+        "Historical years may combine crop-stage-incompatible season windows"
+      ],
+      "data_used": [],
+      "missing_information": [
+        "3+ sourced historical years with crop-specific ETc, effective rain, irrigation"
+      ],
+      "source_urls": [],
+      "confidence": "low",
+      "confidence_explanation": "Nonvalidated screening score percentiles, not a probabilistic forecast",
+      "needs_local_review": true
+    },
+    "status": "insufficient_historical_data"
+  },
+  {
+    "crop_id": "green_gram",
+    "band": null,
+    "threshold_score": 50.0,
+    "below_threshold_years": null,
+    "by_year": {},
+    "heat_flag_days_by_year": {},
+    "evidence": {
+      "benefits": [],
+      "risks": [
+        "Partial score is not a historical yield or success distribution",
+        "Historical years may combine crop-stage-incompatible season windows"
+      ],
+      "data_used": [],
+      "missing_information": [
+        "3+ sourced historical years with crop-specific ETc, effective rain, irrigation"
+      ],
+      "source_urls": [],
+      "confidence": "low",
+      "confidence_explanation": "Nonvalidated screening score percentiles, not a probabilistic forecast",
+      "needs_local_review": true
+    },
+    "status": "insufficient_historical_data"
+  },
+  {
+    "crop_id": "sorghum",
+    "band": null,
+    "threshold_score": 50.0,
+    "below_threshold_years": null,
+    "by_year": {},
+    "heat_flag_days_by_year": {},
+    "evidence": {
+      "benefits": [],
+      "risks": [
+        "Partial score is not a historical yield or success distribution",
+        "Historical years may combine crop-stage-incompatible season windows"
+      ],
+      "data_used": [],
+      "missing_information": [
+        "3+ sourced historical years with crop-specific ETc, effective rain, irrigation"
+      ],
+      "source_urls": [],
+      "confidence": "low",
+      "confidence_explanation": "Nonvalidated screening score percentiles, not a probabilistic forecast",
+      "needs_local_review": true
+    },
+    "status": "insufficient_historical_data"
+  },
+  {
+    "crop_id": "foxtail_millet",
+    "band": null,
+    "threshold_score": 50.0,
+    "below_threshold_years": null,
+    "by_year": {},
+    "heat_flag_days_by_year": {},
+    "evidence": {
+      "benefits": [],
+      "risks": [
+        "Partial score is not a historical yield or success distribution",
+        "Historical years may combine crop-stage-incompatible season windows"
+      ],
+      "data_used": [],
+      "missing_information": [
+        "3+ sourced historical years with crop-specific ETc, effective rain, irrigation"
+      ],
+      "source_urls": [],
+      "confidence": "low",
+      "confidence_explanation": "Nonvalidated screening score percentiles, not a probabilistic forecast",
+      "needs_local_review": true
+    },
+    "status": "insufficient_historical_data"
+  }
+]

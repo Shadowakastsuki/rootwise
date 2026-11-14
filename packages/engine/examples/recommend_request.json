@@ -1,0 +1,42 @@
+{
+  "field": {
+    "region_id": "devanahalli",
+    "lat": 13.25,
+    "lon": 77.71,
+    "soil_type": null,
+    "slope_degrees": null,
+    "water_access": "unknown",
+    "current_crop_id": null,
+    "selected_variety": null,
+    "sowing_date": null,
+    "cover_management_c_by_crop": {},
+    "residue_dry_t_ha_by_crop": {},
+    "residue_retained_fraction": null,
+    "market_by_crop": {},
+    "phenology_override_days": null,
+    "phenology_override_source": null
+  },
+  "priorities": {
+    "water_use": 80.0,
+    "forage_value": 60.0,
+    "nitrogen_fixing": 90.0,
+    "erosion_reduction": 70.0,
+    "organic_matter": 70.0,
+    "market_suitability": 50.0
+  },
+  "climate": {
+    "source_id": null,
+    "source_url": null,
+    "data_kind": "missing",
+    "annual_rainfall_mm": null,
+    "seasonal_effective_rainfall_mm": null,
+    "seasonal_irrigation_mm": null,
+    "seasonal_etc_mm": null,
+    "seasonal_etc_by_crop_mm": {},
+    "daily": [],
+    "coverage": null,
+    "spatial_resolution_km": null,
+    "notes": []
+  },
+  "as_of": null
+}
