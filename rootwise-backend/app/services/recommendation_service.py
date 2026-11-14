@@ -1,4 +1,11 @@
+from datetime import date
 
+from rootwise_engine.api import recommend
+from rootwise_engine.models import (
+    RecommendRequest,
+    FarmField,
+    Climate,
+)
 from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
 
@@ -120,18 +127,70 @@ def build_recommendation_context(
     }
 
 
+
 def run_m1_recommendation_engine(
     context: dict,
     target_season: str,
     target_year: int,
 ) -> dict:
     """
-    M1 integration point.
+    Adapt M3's database context to M1's recommendation contract.
 
-    Replace this function body when M1 supplies its agreed
-    Python package/function or API contract.
+    Missing environmental inputs remain unknown until M2
+    provides verified data.
     """
 
-    raise NotImplementedError(
-        "M1 recommendation engine has not been connected yet."
+    field_data = context["field"]
+    region_data = field_data.get("region") or {}
+
+    # Map only known field information.
+    irrigation = (field_data.get("irrigation_type") or "").lower()
+
+    if irrigation in ("rainfed", "rain-fed"):
+        water_access = "rainfed"
+    elif irrigation in ("irrigated", "drip", "sprinkler", "canal"):
+        water_access = "irrigated"
+    else:
+        water_access = "unknown"
+
+    # The M3 context currently contains no verified field
+    # coordinates. M1's location defaults are Devanahalli.
+    # Do not present these defaults as measured field coordinates.
+    farm_field = FarmField(
+        region_id=str(field_data["region_id"]),
+        soil_type=field_data.get("soil_type"),
+        water_access=water_access,
     )
+
+    # No reliable seasonal climate aggregate is supplied yet.
+    # M2 will eventually provide rainfall, ETc and daily data.
+    climate = Climate(
+        data_kind="missing",
+        notes=[
+            "M2 environmental data pipeline not connected.",
+            "Field-specific coordinates not supplied.",
+            "Season and year supplied by M3 are not yet used "
+            "to construct a seasonal climate dataset.",
+        ],
+    )
+
+    request = RecommendRequest(
+        field=farm_field,
+        climate=climate,
+        as_of=date.today(),
+    )
+
+    result = recommend(request)
+
+    response = result.model_dump(mode="json")
+
+    response["request_context"] = {
+        "field_id": field_data["id"],
+        "target_season": target_season,
+        "target_year": target_year,
+        "region": region_data,
+        "environmental_data_status": "pending_m2",
+        "field_coordinates_status": "not_supplied",
+    }
+
+    return response
