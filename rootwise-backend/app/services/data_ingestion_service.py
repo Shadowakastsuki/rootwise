@@ -20,7 +20,8 @@ from app.models.climate_feature import ClimateFeature
 DATASET_PATH = (
     Path(__file__).resolve().parents[2]
     / "data"
-    / "outputs"
+    / "incoming"
+    / "M2_Deliverables"
     / "bengaluru_urban_20160101.json"
 )
 
@@ -83,6 +84,23 @@ def load_dataset():
 
     if not isinstance(source, str) or not source.strip():
         raise ValueError("Dataset source is missing.")
+
+    indicator_metadata = dataset.get("indicator_metadata")
+
+    if not isinstance(indicator_metadata, dict):
+        raise ValueError("Indicator metadata is missing.")
+
+    missing_metadata = [
+        field for field in INDICATOR_FIELDS
+        if not isinstance(indicator_metadata.get(field), dict)
+        or not indicator_metadata[field].get("source")
+        or not indicator_metadata[field].get("units")
+    ]
+
+    if missing_metadata:
+        raise ValueError(
+            f"Missing indicator metadata: {missing_metadata}"
+        )
 
     try:
         feature_date = date.fromisoformat(dataset["data_date"])
@@ -265,9 +283,7 @@ def ingest_bengaluru_dataset(db: Session):
             "schema_version": dataset.get("schema_version"),
             "crs": dataset.get("crs"),
             "resolution_m": dataset.get("resolution_m"),
-            "indicator_metadata": dataset.get(
-                "indicator_metadata", {}
-            ),
+            "indicator_metadata": dataset["indicator_metadata"],
         }
 
         climate_rows = []
@@ -339,6 +355,7 @@ def ingest_bengaluru_dataset(db: Session):
             "data_date": feature_date.isoformat(),
             "map_cells_processed": len(map_cell_ids),
             "climate_features_processed": len(climate_rows),
+            "indicator_metadata_preserved": True,
         }
 
     except Exception:

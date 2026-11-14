@@ -40,7 +40,7 @@ def get_climate_observations(
     db: Session = Depends(get_db),
 ):
     """
-    Retrieve climate observations and their corresponding map cells.
+    Retrieve climate observations, map cells and original dataset metadata.
 
     Supports filtering by date and data source, with pagination.
     """
@@ -65,6 +65,16 @@ def get_climate_observations(
     total = db.scalar(
         select(func.count(ClimateFeature.id)).where(*conditions)
     )
+
+    # Retrieve metadata from the matching dataset.
+    metadata_statement = (
+        select(ClimateFeature.source_metadata)
+        .where(*conditions)
+        .order_by(ClimateFeature.id)
+        .limit(1)
+    )
+
+    dataset_metadata = db.scalar(metadata_statement)
 
     statement = (
         select(ClimateFeature, MapCell)
@@ -117,6 +127,7 @@ def get_climate_observations(
             ),
             "source": source,
         },
+        "dataset_metadata": dataset_metadata,
         "pagination": {
             "total_records": total or 0,
             "offset": offset,
