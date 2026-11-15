@@ -18,9 +18,8 @@ from app.models.climate_feature import ClimateFeature
 # --------------------------------------------------
 
 DATASET_PATH = (
-    Path(__file__).resolve().parents[2]
-    / "data"
-    / "outputs"
+    Path(__file__).resolve().parents[3]
+    / "m2_deliverables"
     / "bengaluru_urban_20160101.json"
 )
 

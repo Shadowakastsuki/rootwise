@@ -4,7 +4,6 @@ from rootwise_engine.api import recommend
 from rootwise_engine.models import (
     RecommendRequest,
     FarmField,
-    Climate,
 )
 from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
@@ -13,6 +12,8 @@ from app.models.field import Field
 from app.models.crop import Crop
 from app.models.farm_rotation import FarmRotation
 from app.models.climate_feature import ClimateFeature
+from app.services.environmental_service import get_environmental_data
+from app.services.seasonal_climate_service import build_seasonal_climate
 
 
 class FieldNotFoundError(Exception):
@@ -32,6 +33,8 @@ def build_recommendation_context(
 
     if field is None:
         raise FieldNotFoundError("Field not found")
+
+    environmental_data = get_environmental_data(db, field)
 
     region = field.region
 
@@ -65,6 +68,8 @@ def build_recommendation_context(
             "name": field.name,
             "region_id": field.region_id,
             "area_hectares": field.area_hectares,
+            "centroid_lat": field.centroid_lat,
+            "centroid_lon": field.centroid_lon,
             "soil_type": field.soil_type,
             "soil_ph": field.soil_ph,
             "irrigation_type": field.irrigation_type,
@@ -76,6 +81,7 @@ def build_recommendation_context(
                 "country": region.country,
             } if region else None,
         },
+        "environmental_data": environmental_data,
         "crop_catalog": [
             {
                 "id": crop.id,
@@ -127,7 +133,6 @@ def build_recommendation_context(
     }
 
 
-
 def run_m1_recommendation_engine(
     context: dict,
     target_season: str,
@@ -153,25 +158,29 @@ def run_m1_recommendation_engine(
     else:
         water_access = "unknown"
 
-    # The M3 context currently contains no verified field
-    # coordinates. M1's location defaults are Devanahalli.
-    # Do not present these defaults as measured field coordinates.
-    farm_field = FarmField(
-        region_id=str(field_data["region_id"]),
-        soil_type=field_data.get("soil_type"),
-        water_access=water_access,
+    coordinates = (
+        field_data.get("centroid_lat"),
+        field_data.get("centroid_lon"),
     )
 
-    # No reliable seasonal climate aggregate is supplied yet.
-    # M2 will eventually provide rainfall, ETc and daily data.
-    climate = Climate(
-        data_kind="missing",
-        notes=[
-            "M2 environmental data pipeline not connected.",
-            "Field-specific coordinates not supplied.",
-            "Season and year supplied by M3 are not yet used "
-            "to construct a seasonal climate dataset.",
-        ],
+    field_kwargs = {
+        "region_id": str(field_data["region_id"]),
+        "soil_type": field_data.get("soil_type"),
+        "water_access": water_access,
+    }
+
+    if all(value is not None for value in coordinates):
+        field_kwargs["lat"] = coordinates[0]
+        field_kwargs["lon"] = coordinates[1]
+
+    farm_field = FarmField(**field_kwargs)
+
+    environmental_data = context.get("environmental_data") or {}
+    observations = environmental_data.get("observations", [])
+
+    climate = build_seasonal_climate(
+        environmental_data=environmental_data,
+        seasonal_inputs=context.get("seasonal_inputs"),
     )
 
     request = RecommendRequest(
@@ -189,8 +198,17 @@ def run_m1_recommendation_engine(
         "target_season": target_season,
         "target_year": target_year,
         "region": region_data,
-        "environmental_data_status": "pending_m2",
-        "field_coordinates_status": "not_supplied",
+        "environmental_data_status": (
+            "historical_observations_available"
+            if observations
+            else environmental_data.get("status", "unavailable")
+        ),
+        "environmental_data": environmental_data,
+        "field_coordinates_status": (
+            "supplied"
+            if all(value is not None for value in coordinates)
+            else "not_supplied"
+        ),
     }
 
     return response
